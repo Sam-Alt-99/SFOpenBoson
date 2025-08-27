@@ -92,7 +92,7 @@ from strawberryfields.ops import (BSgate,
                                   Xgate,
                                   Zgate)
 from strawberryfields.program_utils import Command
-from strawberryfields.backends.shared_ops import sympmat
+from thewalrus.symplectic import sympmat
 
 from strawberryfields.circuitspecs import GaussianSpecs, FockSpecs, TFSpecs
 
