@@ -78,8 +78,8 @@ import numpy as np
 from scipy.linalg import expm, inv
 
 from openfermion.ops import QuadOperator, BosonOperator
-from openfermion.transforms import get_quad_operator, get_boson_operator
-from openfermion.utils import is_hermitian, prune_unused_indices
+from openfermion.transforms import get_quad_operator, get_boson_operator, prune_unused_indices
+from openfermion.utils import is_hermitian
 
 import strawberryfields as sf
 import strawberryfields.program_utils as pu
