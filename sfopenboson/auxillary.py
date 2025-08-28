@@ -143,10 +143,6 @@ def extract_tunneling(H):
         if key[0] != key[1]:
             # copy iterable to a list
             group_list = list(group)
-            print("Key:", key)
-            print("Group List:", group_list)
-            print([len(item[1]) for item in group_list]) 
-            print("---")
 
             # check only one
             if len(group_list) != 2:
@@ -154,8 +150,9 @@ def extract_tunneling(H):
 
             # check ladders are of the right form
             # of bi^bj and bj^bi
-            ladders = np.array(list(np.array(group_list)[:, 1]))[:, :, 1]
-            ladders = set([tuple(i) for i in ladders.tolist()])
+            ladders = [list(term[1]) for term in group_list]
+            ladders = [tuple((i[0], i[1]) for i in ladder) for ladder in ladders]
+            
             if ladders != {(0, 1), (1, 0)}:
                 raise BoseHubbardError
 
