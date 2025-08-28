@@ -143,6 +143,10 @@ def extract_tunneling(H):
         if key[0] != key[1]:
             # copy iterable to a list
             group_list = list(group)
+            print("Key:", key)
+            print("Group List:", group_list)
+            print([len(item[1]) for item in group_list]) 
+            print("---")
 
             # check only one
             if len(group_list) != 2:
