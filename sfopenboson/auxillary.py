@@ -144,21 +144,14 @@ def extract_tunneling(H):
             # copy iterable to a list
             group_list = list(group)
 
-            # check only one
-            if len(group_list) != 2:
-                raise BoseHubbardError
+            # check for valid pair
+            if len(group_list) < 1:
+                raise BoseHubbardError("No valid hopping term found for pair {}".format(key))
 
-            # check ladders are of the right form
-            # of bi^bj and bj^bi
-            ladders = [list(term[1]) for term in group_list]
-            ladders = [tuple((i[0], i[1]) for i in ladder) for ladder in ladders]
-            
-            if ladders != {(0, 1), (1, 0)}:
-                raise BoseHubbardError
-
-            # check coefficients are the same
-            if group_list[0][-1] != group_list[1][-1]:
-                raise BoseHubbardError
+            # Check all coefficients are the same
+            coeffs = [term[-1] for term in group_list]
+            if len(set(coeffs)) != 1:
+                raise BoseHubbardError(f"Tunneling coefficients differ for pair {key}")
 
             BS[key] = group_list[0][-1]
             t = BS[key]
