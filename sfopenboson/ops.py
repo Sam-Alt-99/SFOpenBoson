@@ -94,7 +94,7 @@ from strawberryfields.ops import (BSgate,
 from strawberryfields.program_utils import Command
 from thewalrus.symplectic import sympmat
 
-from strawberryfields.circuitspecs import GaussianSpecs, FockSpecs, TFSpecs
+from strawberryfields.compilers import Gaussian, Fock, Bosonic
 
 from .auxillary import trotter_layer, quadratic_coefficients
 
@@ -319,6 +319,6 @@ class BoseHubbardPropagation(Decomposition):
         return cmds
 
 
-GaussianSpecs.decompositions.update({"GaussianPropagation": {}})
-FockSpecs.decompositions.update({"BoseHubbardPropagation": {}, "GaussianPropagation": {}})
-TFSpecs.decompositions.update({"BoseHubbardPropagation": {}, "GaussianPropagation": {}})
+Gaussian.decompositions.update({"GaussianPropagation": {}})
+Fock.decompositions.update({"BoseHubbardPropagation": {}, "GaussianPropagation": {}})
+Bosonic.decompositions.update({"BoseHubbardPropagation": {}, "GaussianPropagation": {}})
